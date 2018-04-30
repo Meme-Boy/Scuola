@@ -1,0 +1,51 @@
+<html>
+    <body>
+
+        <h2>Previsioni Meteo</h2>
+
+        <input type="text" id="citta">
+        <br>
+        <br>
+        <input type="text" id="stato">
+        <br>
+        <br>
+        <button onclick="getTime()">Invio</button>
+        <br>
+        <br>
+        <output id="gg"></output>
+
+        <script>
+
+            function getTime() {
+  
+                let xhttp = new XMLHttpRequest();
+                let città = document.getElementById("citta").value;
+                let stato = document.getElementById("stato").value;
+                let timeStr;
+
+                xhttp.onreadystatechange = function () {
+                    
+                    timeStr = xhttp.responseText;
+                    
+                    if(timeStr.includes("Clear")){
+                        gg.innerHTML = "Sole";
+                    } else if(timeStr.includes("Clouds")){
+                        gg.innerHTML = "Nuvoloso";
+                    } else if(timeStr.includes("Rain")){
+                        gg.innerHTML = "Pioggia";
+                    } else{
+                        gg.innerHTML = timeStr;
+                    }
+                    
+                    
+                };
+
+                xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + città + "," + stato + "&APPID=209a1816d8e3783a3c3b5e8ec118424f", true);
+                xhttp.send();
+
+            }
+
+        </script>
+
+    </body>
+</html>
