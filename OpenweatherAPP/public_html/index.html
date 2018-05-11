@@ -11,9 +11,15 @@
         <br>
         <button onclick="getTime()">Invio</button>
         <br>
-        <br>
         <output id="gg"></output>
-
+        <br>
+        <output id="temp">temp</output>
+        <br>
+        <output id="humidity">hum</output>
+        <br>
+        <output id="pressure">press</output>
+        <br>
+        
         <script>
 
             function getTime() {
@@ -21,12 +27,20 @@
                 let xhttp = new XMLHttpRequest();
                 let città = document.getElementById("citta").value;
                 let stato = document.getElementById("stato").value;
+                let time;
                 let timeStr;
 
                 xhttp.onreadystatechange = function () {
+                                        
+                    //timeStr = xhttp.responseText;
                     
-                    timeStr = xhttp.responseText;
+                    time=JSON.parse(xhttp.responseText);
                     
+                    document.getElementById("temp").innerHTML=time.main.temp;
+				    document.getElementById("humidity").innerHTML=time.main.humidity;
+				    document.getElementById("pressure").innerHTML=time.main.pressure;
+                    
+                    /*
                     if(timeStr.includes("Clear")){
                         gg.innerHTML = "Sole";
                     } else if(timeStr.includes("Clouds")){
@@ -36,7 +50,7 @@
                     } else{
                         gg.innerHTML = timeStr;
                     }
-                    
+                    */
                     
                 };
 
