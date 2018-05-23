@@ -1,0 +1,96 @@
+<head>
+	<meta charset="utf-8">
+	<title>Codice Fiscale</title>
+	<link rel="stylesheet" type="text/css" href="materialize.min.css"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="input-field">
+			<input type="text" title="nome" id="name" required class="validate"><br>
+			<label for="NOME">NOME</label>
+        </div>
+		<div class="input-field">
+			<input type="text" title="cognome" id="surname" required class="validate"><br>
+			<label for="CONOME">CONOME</label>
+		</div>
+		<div class="input-field">
+			<input type="text" title="data" id="birthdate" class="datepicker" data-rule-dateWithMoment="true" required>
+			<label>DATA DI NASCITA</label>
+		</div>
+		<div class="input-field">
+			<select title="comune" id="birthplace" required>
+				<option value="" disabled selected>Choose your option</option>
+                <option>ANNONE VENETO</option>
+                <option>CAMPAGNA LUPIA</option>
+                <option>CAMPOLONGO MAGGIORE</option>
+                <option>CAMPONOGARA</option>
+                <option>CAORLE</option>
+                <option>CAVARZERE</option>
+                <option>JESOLO</option>
+                <option>CEGGIA</option>
+                <option>CHIOGGIA</option>
+                <option>CINTO CAOMAGGIORE</option>
+                <option>CONA</option>
+                <option>CONCORDIA SAGITTARIA</option>
+                <option>DOLO</option>
+                <option>ERACLEA</option>
+                <option>FIESSO D'ARTICO</option>
+                <option>FOSSALTA DI PIAVE</option>
+                <option>FOSSALTA DI PORTOGRUARO</option>
+                <option>FOSSO'</option>
+                <option>GRUARO</option>
+                <option>MARCON</option>
+                <option>MARTELLAGO</option>
+                <option>MEOLO</option>
+                <option>MIRA</option>
+                <option>MIRANO</option>
+                <option>MUSILE DI PIAVE</option>
+                <option>NOALE</option>
+                <option>NOVENTA DI PIAVE</option>
+                <option>PIANIGA</option>
+                <option>PORTOGRUARO</option>
+                <option>PRAMAGGIORE</option>
+                <option>QUARTO D'ALTINO</option>
+                <option>SALZANO</option>
+                <option>SAN DONA' DI PIAVE</option>
+                <option>SAN MICHELE AL TAGLIAMENTO</option>
+                <option>SANTA MARIA DI SALA</option>
+                <option>SANTO STINO DI LIVENZA</option>
+                <option>SCORZE'</option>
+                <option>SPINEA</option>
+                <option>STRA</option>
+                <option>TEGLIO VENETO</option>
+                <option>TORRE DI MOSTO</option>
+                <option>VENEZIA</option>
+                <option>VIGONOVO</option>
+                <option>CAVALLINO-TREPORTI</option>
+            </select>
+			<label>LUOGO DI NASCITA</label>
+		</div>
+		<div class="input-field">
+			<form>
+				<label>
+					<input type="radio" name="gender" id="m" value="male" class="p1" required checked/>
+					<span>M</span>
+				</label>
+				<label>
+					<input type="radio" name="gender" id="f" value="female" class="p2" required>
+					<span>F</span>
+				</label>
+			</form>
+		</div>
+		<br>
+		<div class="row">
+			<button class="btn waves_effect light-blue lighten-1 col s2 offset-s5" type="button" onclick="calcola()">CALCOLA</button><br><br>
+			<output name="result" id="output"></output>
+		</div>
+	</div>	
+	<!--  Scripts-->
+	<script type="text/javascript" src="csCalc.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="http://materializecss.com/dist/js/materialize.js"></script>
+	<script type="text/javascript" src="materialize.min.js"></script>
+	<script type="text/javascript" src="init.js"></script>
+</body>
