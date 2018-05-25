@@ -1,96 +1,100 @@
-class Simone {
+let seq = [];
+let usrSeq = [];
+var tf;
+let cpuSeq = [];
+const low_red = "#c66d6d";
+const high_red = "#ff0000";
+const low_green = "#6fce85";
+const high_green = "#00ff00";
+const low_blue = "#7988c4";
+const high_blue = "#0000ff";
 
-	static init(L) {
-		this.coda = [];
-		this.max = 3;
-		Simone.makeLvl(L);
-	}
-	/**
-	 * Riempie la coda di numeri da 0 a 3
-	 * @param {type} N numero di numeri da generare
-	 * @returns null
-	 */
-	static makeLvl(N) {
-		Simone.pulisci();
+function addSeq() {
+    seq.push(Math.floor(Math.random() * (4 - 2 + 1) + 2));
+}
 
-		for (var i = 0; i < N; i++) {
-			this.coda.push(Simone.rand(this.max));
-		}
-	}
+function blinkSeq(array) {
+    for (var i = 0; i < array.length; i++) {
+        switch (array[i]) {
+            case 2 :
+                setTimeout(function () {
+                    document.getElementById("red").style.background = high_red;
+                }, 650 * (i + 1));
+                setTimeout(function () {
+                    document.getElementById("red").style.background = low_red;
+                }, (650 * (i + 1)) + 325);
+                break;
 
-	static getAt(i) {
-		return this.coda[i];
-	}
+            case 3 :
+                setTimeout(function () {
+                    document.getElementById("green").style.background = high_green;
+                }, 650 * (i + 1));
+                setTimeout(function () {
+                    document.getElementById("green").style.background = low_green;
+                }, (650 * (i + 1)) + 325);
+                break;
 
-	static pulisci() {
+            case 4 :
+                setTimeout(function () {
+                    document.getElementById("blue").style.background = high_blue;
+                }, 650 * (i + 1));
+                setTimeout(function () {
+                    document.getElementById("blue").style.background = low_blue;
+                }, (650 * (i + 1)) + 325);
+                break;
+        }
+    }
+}
 
-		for (var i = this.coda.length - 1; i >= 0; i--) {
-			delete this.coda[i];
-		}
+function checkSeq() {
+    for (var i = 0; i < usrSeq.length; i++) {
+        if (usrSeq [i] == seq [i]) {
+            tf = true;
+        } else {
+            gameOver();
+        }
 
-	}
+    }
+}
 
-	static rand(max) {
-		return Math.floor((Math.random() * max));
-	}
+function redButton() {
+    usrSeq.push(2);
+    checkSeq();
+    document.getElementById("a").innerHTML = tf;
+}
 
-	static N() {
-		return this.coda.length;
-	}
+function greenButton() {
+    usrSeq.push(3);
+    checkSeq();
+    document.getElementById("a").innerHTML = tf;
+}
+
+function blueButton() {
+    usrSeq.push(4);
+    checkSeq();
+    document.getElementById("a").innerHTML = tf;
+}
+
+function play() {
+    if (usrSeq.length == seq.length) {
+        addSeq();
+        blinkSeq(seq);
+        usrSeq = [];
+        document.getElementById("points").innerHTML = "Points: " + (seq.length - 1);
+    } else {
+        gameOver();
+    }
 
 }
 
-class Controller {
+function gameOver() {
+        document.getElementById("blue").disabled = true;
+        document.getElementById("red").disabled = true;
+        document.getElementById("green").disabled = true;
+        document.getElementById("play").disabled = true;
+        document.getElementById("points").innerHTML = "GAME OVER: " + (seq.length - 1) + " points";
 
-	static gen(n,array,last_indice) {
-
-		var indice = Simone.getAt(n);
-		Controller.accendi(document.getElementById(array[last_indice]),"lightgoldenrodyellow");
-		Controller.accendi(document.getElementById(array[indice]), array[indice]);
-		last_indice = indice;
-
-		setTimeout(function () {
-				Controller.accendi(document.getElementById(array[last_indice]),"lightgoldenrodyellow");
-			}, 400);
-
-		if (n < Simone.N()) {
-			
-			setTimeout(
-				function () {
-					Controller.gen(n + 1,array,last_indice);
-				}
-			, 1000);
-		}
-	}
-
-	static gioca(L) {
-		this.n = 0;
-		
-		Simone.init(L);
-
-		var array = ["red", "green", "blue"];
-		var last_indice = 0;
-
-		Controller.gen(0,array,last_indice);
-	}
-
-	static accendi(elemento, colore) {
-		elemento.style.backgroundColor = colore;
-	}
-
-	static sleep(milliseconds) {
-		return new Promise(resolve => setTimeout(resolve, milliseconds));
-	}
-
-	static on_click(pos){
-		if(Simone.getAt(this.n++)!=pos){
-			alert("perso");
-		}
-		
-		if(this.n==Simone.N()){
-			Controller.gioca(++this.L);
-		}
-
-	}
-
-}
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
+    }

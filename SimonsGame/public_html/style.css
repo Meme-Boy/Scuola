@@ -7,7 +7,7 @@ button{
 }
 
 .greenButton{
-    background-color: #27ae60;
+    background-color: #6fce85;
     height: 200px;
     width: 200px;
     border-radius: 200px;
@@ -16,7 +16,7 @@ button{
 }
 
 .redButton{
-    background-color: #e74c3c;
+    background-color: #c66d6d;
     height: 200px;
     width: 200px;
     border-radius: 200px;
@@ -34,7 +34,7 @@ button{
 }
 
 .blueButton{
-    background-color: #0984e3;
+    background-color: #7988c4;
     height: 200px;
     width: 200px;
     border-radius: 200px;

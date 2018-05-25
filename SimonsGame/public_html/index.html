@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
-        <script src="simon.js"></script>
+        <script src="simonJs.js"></script>
         <title>Simon Game</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +12,16 @@
 
         <h1>Simon Game</h1>
         <div class="wrapper">
-            <button class="redButton" id="red" onclick="Controller.on_click(0)"></button>
-            <button class="greenButton" id="green" onclick="Controller.on_click(1)"></button>
-            <button class="blueButton" id="blue" onclick="Controller.on_click(2)"></button>
+            <button class="redButton" id="red" onclick="redButton()" value="0" ></button>
+            <button class="greenButton" id="green" onclick="greenButton()" value="1" ></button>
+            <button class="blueButton" id="blue" onclick="blueButton()" value="2" ></button>
         </div>
         
-        <h2>Points:</h2>
+        <h2 id="points">Points: 0</h2>
             
         <div class="wrapper">
-        <button class="startButton">PLAY</button>
+            <button class="startButton" id="play" onclick="play()">PLAY</button>
         </div>
-        
-        <script>
-            Controller.L = 3;
-            Controller.gioca(3);
-        </script>
         
     </body>
 </html>
