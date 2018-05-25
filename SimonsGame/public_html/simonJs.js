@@ -8,6 +8,8 @@ const low_green = "#6fce85";
 const high_green = "#00ff00";
 const low_blue = "#7988c4";
 const high_blue = "#0000ff";
+const low_yellow = "#D6A2E8";
+const high_yellow = "#82589F";
 
 function addSeq() {
     seq.push(Math.floor(Math.random() * (4 - 2 + 1) + 2));
@@ -42,6 +44,16 @@ function blinkSeq(array) {
                     document.getElementById("blue").style.background = low_blue;
                 }, (650 * (i + 1)) + 325);
                 break;
+                
+  /*          case 5 :
+                setTimeout(function () {
+                    document.getElementById("yellow").style.background = low_yellow;
+                }, 650 * (i + 1));
+                setTimeout(function () {
+                    document.getElementById("ywllow").style.background = high_yellow;
+                }, (650 * (i + 1)) + 325);
+                break;
+                */
         }
     }
 }
@@ -69,6 +81,12 @@ function greenButton() {
     document.getElementById("a").innerHTML = tf;
 }
 
+function yellowButton() {
+    usrSeq.push(5);
+    checkSeq();
+    document.getElementById("a").innerHTML = tf;
+}
+
 function blueButton() {
     usrSeq.push(4);
     checkSeq();
@@ -76,6 +94,7 @@ function blueButton() {
 }
 
 function play() {
+    document.getElementById("play").innerHTML = "NEXT";
     if (usrSeq.length == seq.length) {
         addSeq();
         blinkSeq(seq);
